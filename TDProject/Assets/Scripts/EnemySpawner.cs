@@ -7,25 +7,28 @@ public class EnemySpawner : MonoBehaviour
     // 0 Sphere 1 Cylinder
     [SerializeField] GameObject [] enemyPrefabs;
     private List<GameObject> enemies;
+    public float spawnTime;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         enemies = new List<GameObject>();   
-        SetEnemies(8);
-        Spawn();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
      
     }
 
-    private void Spawn()
+    #region SpawnMechanic
+    public void Spawn(float timer)
     {
-        
-            StartCoroutine(RespawnTimer());
+        StopAllCoroutines();
+        Debug.Log("Spawn");
+        spawnTime = timer;
+        StartCoroutine(RespawnTimer());
         
     }
     IEnumerator RespawnTimer()
@@ -33,13 +36,17 @@ public class EnemySpawner : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             if (!enemy.activeInHierarchy)
+            {
                 enemy.SetActive(true);
-            yield return new WaitForSeconds(3f);
+                enemy.transform.position = transform.position;
+            }
+               
+            yield return new WaitForSeconds(spawnTime);
         }
            
 
     }
-    private void SetEnemies(int level)
+    public void SetEnemies(int level)
     {
         for (int i=0; i<level; i++)
         {
@@ -48,6 +55,10 @@ public class EnemySpawner : MonoBehaviour
             currentPrefab.SetActive(false);
             enemies.Add(currentPrefab);
         }
-
+        
     }
+    #endregion
+
+   
 }
+

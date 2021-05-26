@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1344300145704073374}
   - component: {fileID: 1344300145704073347}
   - component: {fileID: -6764036696440643410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d32f0ab85f7494f902ffac8ed830a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  partycleEffect: {fileID: 6417320747419214952, guid: 7ede9b270cdc03044a06a990bfc332c6, type: 3}
 --- !u!54 &-6764036696440643410
 Rigidbody:
   m_ObjectHideFlags: 0
