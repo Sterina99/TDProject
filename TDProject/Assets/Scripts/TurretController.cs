@@ -16,7 +16,8 @@ public class TurretController : MonoBehaviour
     private float shortestDistance;
     public Transform cannonPoint;
 
-    public GameObject bulletPrefab; 
+    public GameObject bulletPrefab;
+    public Transform baseRot;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +32,8 @@ public class TurretController : MonoBehaviour
         #region Rotation
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 turretRotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-        transform.rotation = Quaternion.Euler(turretRotation.x, turretRotation.y, 0f);
+        Vector3 turretRotation = Quaternion.Lerp(baseRot.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        baseRot.rotation = Quaternion.Euler(turretRotation.x, turretRotation.y, 0f);
         #endregion
 
         if (fireCd > 1)
@@ -77,7 +78,7 @@ public class TurretController : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bulletGO= Instantiate(bulletPrefab, cannonPoint.position, transform.rotation);
+        GameObject bulletGO= Instantiate(bulletPrefab, cannonPoint.position - cannonPoint.forward, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
         {
