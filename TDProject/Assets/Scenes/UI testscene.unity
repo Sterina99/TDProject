@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 261275243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: SnatchTurret
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &261275243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +364,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  naturretId:
+  - TurretY
+  - TurretR
+  - TurretB
+  - TurretG
 --- !u!1 &643238530
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +455,11 @@ MonoBehaviour:
   turretSpawners: []
   turretSnatchers: []
   turrets: []
+  naturretId:
+  - TurretY
+  - TurretR
+  - TurretB
+  - TurretG
 --- !u!114 &674150153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +541,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 674150153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: TurretSpawner
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &689598669
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +701,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 896618421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: TurretSpawner
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &896618421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +833,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 920040569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: SnatchTurret
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &920040569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1187,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1099892538}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: SnatchTurret
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1099892538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,7 +1351,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1434566654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: TurretSpawner
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1434566654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,7 +1583,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1745498258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: SnatchTurret
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1745498258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,7 +1798,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2068867845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444057287}
+        m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
+        m_MethodName: TurretSpawner
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2068867845
 MonoBehaviour:
   m_ObjectHideFlags: 0
