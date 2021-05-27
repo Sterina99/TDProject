@@ -6,7 +6,15 @@ public class UiTopTurrets : MonoBehaviour
     public Button[] turretSpawners;
     public Button[] turretSnatchers;
     public GameObject[] turrets;
-
+    public string[] name= {"TurretY", "TurretR", "TurretB", "TurretG"};
+    private void Start()
+    {
+        for(int i=0; i < 4; i++)
+        {
+            turrets[i] = GameObject.Find( name[i]);
+        }
+        
+    }
     public void SnatchTurret (int turretNumber)
     {
         turrets[turretNumber].gameObject.SetActive(false);
