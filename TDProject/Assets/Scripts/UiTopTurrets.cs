@@ -3,37 +3,25 @@ using UnityEngine.UI;
 
 public class UiTopTurrets : MonoBehaviour
 {
-    public Image turretImage;
-    private bool turretHere = false;
-    private bool turretIsBeingMoved = false;
-    private GameObject turret;
+    public Button[] turretSpawners;
+    public Button[] turretSnatchers;
+    public GameObject[] turrets;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SnatchTurret (int turretNumber)
     {
-        Debug.Log("It collided");
-
-        if (collision.tag == "Turret")
-        {
-            collision.gameObject.SetActive(false);
-            turretImage.gameObject.SetActive(true);
-            turretHere = true;
-            turret = collision.gameObject;
-        }
+        turrets[turretNumber].gameObject.SetActive(false);
+        turretSnatchers[turretNumber].gameObject.SetActive(false);
+        turretSpawners[turretNumber].gameObject.SetActive(true);
     }
 
-    private void OnMouseDown()
+    public void TurretSpawner (int turretNumber)
     {
-        if (turretHere == false)
-        {
-            return;
-        }
+        turrets[turretNumber].gameObject.SetActive(true);
+        turretSnatchers[turretNumber].gameObject.SetActive(true);
+        turretSpawners[turretNumber].gameObject.SetActive(false);
 
-        else
-        {
-
-            turretImage.gameObject.SetActive(false);
-            turretHere = false;
-            turret.gameObject.SetActive(true);
-        }
+        //call function to have spawned turret follow mouse position and place it on click
     }
+
+
 }
