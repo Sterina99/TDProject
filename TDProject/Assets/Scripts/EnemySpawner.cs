@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     public void Spawn(float timer)
     {
         StopAllCoroutines();
-        Debug.Log("Spawn");
+      //  Debug.Log("Spawn");
         spawnTime = timer;
         StartCoroutine(RespawnTimer());
         

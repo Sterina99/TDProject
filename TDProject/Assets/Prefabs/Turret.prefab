@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd9fb31313028d4da54c02da1b41178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLinked: 0
   damage: 10
   range: 15
   fireRate: 1
@@ -332,6 +333,7 @@ MonoBehaviour:
   cannonPoint: {fileID: 79838780516664350}
   bulletPrefab: {fileID: 3332454994434634066, guid: 1ed4ff3cd3ebdef43b71ceff0c0fb1d6, type: 3}
   baseRot: {fileID: 5207391819869479884}
+  platForm: {fileID: 8950334536859089065}
 --- !u!65 &2137606552
 BoxCollider:
   m_ObjectHideFlags: 0

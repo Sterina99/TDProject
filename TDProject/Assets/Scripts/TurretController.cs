@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    private bool isLinked;
+    public bool isLinked;
     private float dragSpeed;
     private float distance = 0f;
+
     [Header("Stats")]
     public int damage = 10;
     public int range = 15;
@@ -20,7 +21,8 @@ public class TurretController : MonoBehaviour
     public Transform cannonPoint;
 
     public GameObject bulletPrefab;
-    public Transform baseRot;
+    public  Transform baseRot;
+    public Transform platForm;
 
     // Start is called before the first frame update
     void Start()
@@ -105,13 +107,19 @@ public class TurretController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Debug.Log("linked");
-        isLinked = true;
-        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        TurretSnatch();
     }
     private void OnMouseUp()
     {
         isLinked = false;
+
     }
+    public void TurretSnatch()
+    {
+        //Debug.Log("linked");
+        isLinked = true;
+        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+    }
+   
     #endregion
 }

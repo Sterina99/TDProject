@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         if (enemyCounter == 0)
         {
-            Debug.Log("YOU WIN");
+         //   Debug.Log("YOU WIN");
             timer = 0;
 
             difficultyFac = (int)((maxTime - timer) / maxTime) *4;

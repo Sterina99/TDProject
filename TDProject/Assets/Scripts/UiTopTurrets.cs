@@ -9,7 +9,7 @@ public class UiTopTurrets : MonoBehaviour
     public string[] naturretId = {"TurretY", "TurretR", "TurretB", "TurretG"};
     private void Start()
     {
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < naturretId.Length; i++)
         {
             turrets[i] = GameObject.Find(naturretId[i]);
         }
@@ -28,7 +28,10 @@ public class UiTopTurrets : MonoBehaviour
         turretSnatchers[turretNumber].gameObject.SetActive(true);
         turretSpawners[turretNumber].gameObject.SetActive(false);
 
+        turrets[turretNumber].GetComponent<TurretController>().TurretSnatch();
+
         //call function to have spawned turret follow mouse position and place it on click
+        
     }
 
 
