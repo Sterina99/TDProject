@@ -5,11 +5,13 @@ public class UiTopTurrets : MonoBehaviour
 {
     public Image turretImage;
     private bool turretHere = false;
-    private bool mouseIsHere = false;
+    private bool turretIsBeingMoved = false;
     private GameObject turret;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("It collided");
+
         if (collision.tag == "turret")
         {
             collision.gameObject.SetActive(false);
@@ -28,6 +30,7 @@ public class UiTopTurrets : MonoBehaviour
 
         else
         {
+
             turretImage.gameObject.SetActive(false);
             turretHere = false;
             turret.gameObject.SetActive(true);
