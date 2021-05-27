@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
+    private bool isLinked;
+    private float dragSpeed;
+    private float distance = 0f;
     [Header("Stats")]
     public int damage = 10;
     public int range = 15;
@@ -22,12 +25,25 @@ public class TurretController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("FindTarget", 0, 0.6f);        
+        InvokeRepeating("FindTarget", 0, 0.6f);
+        isLinked = false;
+        dragSpeed = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isLinked)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 rayPoint = ray.GetPoint(distance);
+            transform.position = rayPoint;
+            return;
+            /*
+            Debug.Log(Input.mousePosition);
+            transform.Translate( Input.mousePosition *dragSpeed*Time.deltaTime);
+            return;*/
+        }
         if (target == null) return;
         #region Rotation
         Vector3 dir = target.position - transform.position;
@@ -85,4 +101,17 @@ public class TurretController : MonoBehaviour
             bullet.Seek(target);
         }
     }
+    #region    Drag&Drop
+
+    private void OnMouseDown()
+    {
+        //Debug.Log("linked");
+        isLinked = true;
+        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+    }
+    private void OnMouseUp()
+    {
+        isLinked = false;
+    }
+    #endregion
 }

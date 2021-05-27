@@ -12,7 +12,7 @@ public class UiTopTurrets : MonoBehaviour
     {
         Debug.Log("It collided");
 
-        if (collision.tag == "turret")
+        if (collision.tag == "Turret")
         {
             collision.gameObject.SetActive(false);
             turretImage.gameObject.SetActive(true);

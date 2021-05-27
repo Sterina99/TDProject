@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     NavMeshAgent myNavMeshAgent;
     Transform target;
-    SceneManager sceneManager;
+    LevelManager sceneManager;
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
     void Start()
@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
         myNavMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Goal").transform;
         SetDestinationToTarget();
-        sceneManager = FindObjectOfType<SceneManager>();
+        sceneManager = FindObjectOfType<LevelManager>();
         health = 100;
         
     }
@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(other.gameObject);
            sceneManager.enemyCounter--;
-            Debug.Log(other.GetComponent<Bullet>().damage);
+          //  Debug.Log(other.GetComponent<Bullet>().damage);
             health -= other.GetComponent<Bullet>().damage;
             if (health <= 0)
             {
