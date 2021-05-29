@@ -7,7 +7,9 @@ public class UiTopTurrets : MonoBehaviour
     public Button[] turretSnatchers;
     public GameObject[] turrets;
     public string[] naturretId = {"TurretY", "TurretR", "TurretB", "TurretG"};
+
     public Text baseText;
+    public Text resText;
 
     private void Start()
     {
@@ -40,5 +42,10 @@ public class UiTopTurrets : MonoBehaviour
     public void OnBaseHit ()
     {
         baseText.text = "Base health: " + "health value"/*need the actual variable instead*/;
+    }
+
+    public void OnResourcePicked (int value)
+    {
+        resText.text = "" + value;
     }
 }
