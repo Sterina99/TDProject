@@ -25,6 +25,7 @@ public class SnapTurret : MonoBehaviour
        //     Debug.Log("Snapped");
             turretController.gameObject.transform.position = gameObject.transform.position + Vector3.up *0.6f;
             turretController.isLinked = false;
+            turretController.isOff = false;
         //    turretController
         }
     }

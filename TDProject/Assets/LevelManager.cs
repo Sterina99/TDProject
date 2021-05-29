@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     EnemySpawner spawner;
-   
+    public int money;
+
     [Header("LevelManager")]
     [SerializeField] int level=2;
     [SerializeField] int prevLvl=0;
@@ -22,6 +23,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         NewLevel();
+        money = 0;
 
     }
 
@@ -52,4 +54,10 @@ public class LevelManager : MonoBehaviour
     }
 
     #endregion
+
+    public void addMoney(int val)
+    {
+        money += val;
+    }
+
 }

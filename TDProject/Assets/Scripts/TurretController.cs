@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class TurretController : MonoBehaviour
 {
     public bool isLinked;
+    public bool isOff;
     private float dragSpeed;
     private float distance = 0f;
 
+    [Header("UI")]
     UiTopTurrets uiTopTurrets;
     [SerializeField] Slider slider;
     [SerializeField] Button repairButton;
@@ -21,6 +23,7 @@ public class TurretController : MonoBehaviour
     private float rotationSpeed = 15f;
     [SerializeField] float health;
     [SerializeField] float maxHealth;
+    [SerializeField] int repairCost;
     
 
     [Header("TargetingSys")]
@@ -31,18 +34,21 @@ public class TurretController : MonoBehaviour
     public GameObject bulletPrefab;
     public  Transform baseRot;
     public Transform platForm;
+    public LevelManager levelManager;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("FindTarget", 0, 0.6f);
         isLinked = false;
+        isOff = true;
         dragSpeed = 2f;
-
+        repairCost = 8;
         maxHealth = 10f;
         health = maxHealth;
         repairButton= GetComponentInChildren<Button>();
         repairButton.gameObject.SetActive(false);
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -62,6 +68,7 @@ public class TurretController : MonoBehaviour
             transform.Translate( Input.mousePosition *dragSpeed*Time.deltaTime);
             return;*/
         }
+        if (target == null || isOff) return;
         health -= Time.deltaTime;
         slider.value = health / maxHealth;
         if(health<0)
@@ -69,8 +76,9 @@ public class TurretController : MonoBehaviour
             //hide Hp bar and show Repair button
             slider.gameObject.SetActive(false);
             repairButton.gameObject.SetActive(true);
+            isOff = true;
         }
-        if (target == null) return;
+        
         #region Rotation
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -97,6 +105,7 @@ public class TurretController : MonoBehaviour
 
         shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
+        //scan the closest target
         foreach(GameObject enemy in enemies)
         {
 
@@ -149,6 +158,7 @@ public class TurretController : MonoBehaviour
     #endregion
    public void RepairTurret()
     {
+        if (levelManager.money < repairCost) return;
         if (uiTopTurrets == null)
         {
             uiTopTurrets= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
@@ -157,6 +167,7 @@ public class TurretController : MonoBehaviour
         slider.gameObject.SetActive(true);
         repairButton.gameObject.SetActive(false);
         uiTopTurrets.SnatchTurret(id);
+        isOff = false;
 
         
     }

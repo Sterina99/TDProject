@@ -1826,7 +1826,7 @@ GameObject:
   - component: {fileID: 923211611}
   - component: {fileID: 923211610}
   m_Layer: 0
-  m_Name: SceneManagaer
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1844,6 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039c008bbd39e184288aadbe3c1b75b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
   level: 2
   prevLvl: 0
   enemyCounter: 8

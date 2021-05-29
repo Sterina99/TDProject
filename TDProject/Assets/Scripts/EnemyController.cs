@@ -10,15 +10,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
     public int damage;
+    public int money;
     void Start()
     {
         myNavMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Goal").transform;
         SetDestinationToTarget();
         sceneManager = FindObjectOfType<LevelManager>();
+        #region Stats
         health = 100;
         damage = 10;
-        
+        money = 3;
+        #endregion
     }
 
     void Update()
@@ -53,6 +56,8 @@ public class EnemyController : MonoBehaviour
 
                 Destroy(instance, 2f);
                 gameObject.SetActive(false);
+                sceneManager.addMoney(money);
+
             }
 
         }
