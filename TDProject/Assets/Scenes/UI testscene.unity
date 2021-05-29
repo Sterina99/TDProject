@@ -369,6 +369,7 @@ MonoBehaviour:
   - TurretR
   - TurretB
   - TurretG
+  baseText: {fileID: 998361271}
 --- !u!1 &643238530
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +461,7 @@ MonoBehaviour:
   - TurretR
   - TurretB
   - TurretG
+  baseText: {fileID: 0}
 --- !u!114 &674150153
 MonoBehaviour:
   m_ObjectHideFlags: 0
