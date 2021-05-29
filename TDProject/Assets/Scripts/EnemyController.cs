@@ -46,8 +46,9 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject);
-           sceneManager.enemyCounter--;
+            other.gameObject.SetActive(false);
+            sceneManager.enemyCounter--;
+
           //  Debug.Log(other.GetComponent<Bullet>().damage);
             health -= other.GetComponent<Bullet>().damage;
             if (health <= 0)

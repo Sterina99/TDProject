@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         if (!target.gameObject.activeInHierarchy)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             return;
         }
         Vector3 dir = target.position - transform.position;

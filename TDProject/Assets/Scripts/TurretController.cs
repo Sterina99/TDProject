@@ -16,8 +16,7 @@ public class TurretController : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] int id;
-    public int damage = 10;
-    public int range = 15;
+    public float range = 15f;
     public float fireRate = 1f;
     public float fireCd = 0f;
     private float rotationSpeed = 15f;
@@ -31,7 +30,7 @@ public class TurretController : MonoBehaviour
     private float shortestDistance;
     public Transform cannonPoint;
 
-    public GameObject bulletPrefab;
+    [SerializeField] BulletPooling ammoSys;
     public  Transform baseRot;
     public Transform platForm;
     public LevelManager levelManager;
@@ -130,8 +129,9 @@ public class TurretController : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bulletGO= Instantiate(bulletPrefab, cannonPoint.position - cannonPoint.forward, transform.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        GameObject bulletGo = ammoSys.GetBullet(cannonPoint);
+        Bullet bullet = bulletGo.GetComponent<Bullet>();
         if (bullet != null)
         {
             bullet.Seek(target);
@@ -172,4 +172,10 @@ public class TurretController : MonoBehaviour
         
     }
     
+    public void LevelUp()
+    {
+        fireRate = fireRate * 1.25f;
+        range = range * 1.25f;
+
+    }
 }
