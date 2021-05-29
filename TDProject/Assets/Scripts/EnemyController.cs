@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     LevelManager sceneManager;
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
+    [SerializeField] GameObject coinPrefab;
     public int damage;
     public int money;
     void Start()
@@ -56,8 +57,11 @@ public class EnemyController : MonoBehaviour
                 GameObject instance = Instantiate(partycleEffect,transform.position,transform.rotation);
 
                 Destroy(instance, 2f);
+
+                Instantiate(coinPrefab, transform.position, transform.rotation);
                 gameObject.SetActive(false);
-                sceneManager.addMoney(money);
+
+                
 
             }
 

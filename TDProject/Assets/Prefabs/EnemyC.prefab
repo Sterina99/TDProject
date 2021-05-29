@@ -135,6 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   partycleEffect: {fileID: 6417320747419214952, guid: 7ede9b270cdc03044a06a990bfc332c6, type: 3}
+  coinPrefab: {fileID: 8202402504538224860, guid: 92c5469cd3b11d64e83e5648c0b57a4f, type: 3}
+  damage: 0
+  money: 0
 --- !u!54 &-6764036696440643410
 Rigidbody:
   m_ObjectHideFlags: 0
