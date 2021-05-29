@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     LevelManager sceneManager;
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
+    public int damage;
     void Start()
     {
         myNavMeshAgent = GetComponent<NavMeshAgent>();
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
         SetDestinationToTarget();
         sceneManager = FindObjectOfType<LevelManager>();
         health = 100;
+        damage = 10;
         
     }
 

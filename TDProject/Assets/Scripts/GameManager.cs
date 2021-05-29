@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Camera[] cameras;
     // Start is called before the first frame update
     void Start()
     {
         SceneManager.LoadSceneAsync("UI testscene", LoadSceneMode.Additive);
+
     }
 
     // Update is called once per frame

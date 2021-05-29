@@ -18,12 +18,14 @@ public class SnapTurret : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         TurretController turretController = other.GetComponent<TurretController>();
+        if (turretController == null) return;
         Debug.Log("entered");
         if (turretController.isLinked)
         {
-            Debug.Log("Snapped");
+       //     Debug.Log("Snapped");
             turretController.gameObject.transform.position = gameObject.transform.position + Vector3.up *0.6f;
             turretController.isLinked = false;
+        //    turretController
         }
     }
 }
