@@ -23,7 +23,7 @@ public class TurretController : MonoBehaviour
     private float rotationSpeed = 15f;
     [SerializeField] float health;
     [SerializeField] float maxHealth;
-    [SerializeField] int repairCost;
+    [SerializeField] int repairCost=5;
     
 
     [Header("TargetingSys")]
@@ -69,8 +69,8 @@ public class TurretController : MonoBehaviour
             return;*/
         }
         if (target == null || isOff) return;
-        health -= Time.deltaTime;
-        slider.value = health / maxHealth;
+       
+        
         if(health<0)
         {
             //hide Hp bar and show Repair button
@@ -90,6 +90,8 @@ public class TurretController : MonoBehaviour
         if (fireCd > 1)
         {
             Shoot();
+            health -= 1;
+            slider.value = health / maxHealth;
             fireCd = 0;
         }
         else
@@ -138,6 +140,7 @@ public class TurretController : MonoBehaviour
             bullet.Seek(target);
         }
     }
+
     #region    Drag&Drop
 
     private void OnMouseDown()
@@ -160,11 +163,15 @@ public class TurretController : MonoBehaviour
    public void RepairTurret()
     {
         if (levelManager.money < repairCost) return;
+        levelManager.money -= repairCost;
         if (uiTopTurrets == null)
         {
             uiTopTurrets= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
         }
+        //refresh the UI element
         health = 10f;
+        slider.value = health / maxHealth;
+
         slider.gameObject.SetActive(true);
         repairButton.gameObject.SetActive(false);
         uiTopTurrets.SnatchTurret(id);

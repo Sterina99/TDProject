@@ -9,13 +9,17 @@ public class SnapTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isEmpty = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(turretController!=null &&  !turretController.gameObject.activeInHierarchy)
+        {
+            isEmpty = true;
+            turretController = null; 
+        }    
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -35,9 +39,11 @@ public class SnapTurret : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Turret")) return;
+        //the turret gets displaced, needs to be turned off
         if (!isEmpty && other.gameObject==turretController.gameObject)
         {
             isEmpty = true;
+            other.GetComponent<TurretController>().isOff = true;
             
         }
     }

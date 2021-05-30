@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public int money;
 
     [Header("LevelManager")]
-    [SerializeField] int level=2;
+    [SerializeField] int level=1;
     [SerializeField] int prevLvl=0;
     public int enemyCounter=8;
     [SerializeField] float timer;
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
         spawner.SetEnemies(level-prevLvl);
         enemyCounter = level;
 
-        spawner.Spawn(0.5f *(1-(level*0.006f)));
+        spawner.Spawn(0.4f);
     }
 
     #endregion

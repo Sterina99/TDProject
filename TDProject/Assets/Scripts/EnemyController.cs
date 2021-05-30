@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
     [SerializeField] GameObject coinPrefab;
+    Rigidbody rb;
+    [SerializeField] bool isSprinting;
     public int damage;
     public int money;
     void Start()
@@ -18,6 +20,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.Find("Goal").transform;
         SetDestinationToTarget();
         sceneManager = FindObjectOfType<LevelManager>();
+      rb = GetComponent<Rigidbody>();
         #region Stats
         health = 100;
         damage = 10;
@@ -27,7 +30,21 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-      
+       // Debug.Log(transform.forward.x);
+        if (Mathf.Abs(transform.forward.z)  > 0.1f && Mathf.Abs(transform.forward.x) < 0.85f && isSprinting ==false)
+        {
+            isSprinting = true;
+           
+            myNavMeshAgent.speed += 20;
+            myNavMeshAgent.acceleration += 20;
+        }
+       else  if(Mathf.Abs(transform.forward.x) > 0.85f && Mathf.Abs(transform.forward.z) < 0.7f && isSprinting == true)
+        {
+           
+            isSprinting = false;
+            myNavMeshAgent.speed -= 20;
+            myNavMeshAgent.acceleration -= 20;
+        }
     }
   
     void SetDestinationToMousePosition()
