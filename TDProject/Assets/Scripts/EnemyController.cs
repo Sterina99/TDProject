@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         myNavMeshAgent = GetComponent<NavMeshAgent>();
-        target = GameObject.Find("Goal").transform;
+        target = GameObject.Find("SKVARE II").transform;
         SetDestinationToTarget();
         sceneManager = FindObjectOfType<LevelManager>();
       rb = GetComponent<Rigidbody>();

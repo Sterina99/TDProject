@@ -9,7 +9,7 @@ public class GoalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        slider = GameObject.Find("Slider").GetComponent<Slider>();
     }
 
     // Update is called once per frame
