@@ -11,6 +11,7 @@ public class UiTopTurrets : MonoBehaviour
 
     public Text baseText;
     public Text resText;
+    [SerializeField] LevelManager lvlManager;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class UiTopTurrets : MonoBehaviour
         {
             turrets[i] = GameObject.Find(naturretId[i]);
         }
-        
+        lvlManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     public void SnatchTurret (int turretNumber)
@@ -47,28 +48,41 @@ public class UiTopTurrets : MonoBehaviour
 
     public void OnResourcePicked (int value)
     {
-        resText.text = "" + value;
+        resText.text = "x " + value;
+        
         CheckUpgrade();
     }
 
     private void CheckUpgrade ()
     {
-        if (true) //check the resources and if they are sufficient to upgrade
-        {
+       
             for (int i = 0; i < upgradeArrows.Length; i++)
             {
-                if (true) //check if the turret is actuallyupgradable
-                {
-                    upgradeArrows[i].gameObject.SetActive(true);
-                }
-            }
+                 
+                        if (turrets[i].GetComponent<TurretController>().lvlUpCost <= lvlManager.money && !turrets[i].GetComponent<TurretController>().isOff) //check if the turret is actuallyupgradable
+                        {
+                    
+                            upgradeArrows[i].gameObject.SetActive(true);
+                        }
+                          else if(turrets[i].GetComponent<TurretController>().lvlUpCost > lvlManager.money || turrets[i].GetComponent<TurretController>().isOff)
+                          {
+                            upgradeArrows[i].gameObject.SetActive(false);
+                          }
+                
         }
+        
     }
 
-    public void UpgradeTurret (string turretId) //identification can be changed or use the turrets[] array dependent on the needs
+    public void UpgradeTurret (int turretId) //identification can be changed or use the turrets[] array dependent on the needs
     {
+      //  Debug.Log("UPgrade");
         //do the upgrade
         //mak sure turret upgradability is changed if neccessary
-        CheckUpgrade();
+        TurretController currentTurret = turrets[turretId].GetComponent<TurretController>();
+        currentTurret.LevelUp();
+        lvlManager.money -= currentTurret.lvlUpCost;
+        currentTurret.lvlUpCost += 3;
+        OnResourcePicked(lvlManager.money);
+       
     }
 }

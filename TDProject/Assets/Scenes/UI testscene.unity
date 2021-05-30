@@ -321,13 +321,13 @@ MonoBehaviour:
       - m_Target: {fileID: 444057287}
         m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
         m_MethodName: UpgradeTurret
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &416434661
@@ -509,7 +509,8 @@ MonoBehaviour:
   - TurretB
   - TurretG
   baseText: {fileID: 998361271}
-  resText: {fileID: 0}
+  resText: {fileID: 1568865376}
+  lvlManager: {fileID: 0}
 --- !u!1 &478845296
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,13 +577,13 @@ MonoBehaviour:
       - m_Target: {fileID: 444057287}
         m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
         m_MethodName: UpgradeTurret
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &478845298
@@ -741,13 +742,13 @@ MonoBehaviour:
       - m_Target: {fileID: 444057287}
         m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
         m_MethodName: UpgradeTurret
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &673977538
@@ -869,6 +870,7 @@ MonoBehaviour:
   - TurretG
   baseText: {fileID: 0}
   resText: {fileID: 0}
+  lvlManager: {fileID: 0}
 --- !u!114 &674150153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,7 +1886,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: resource
+  m_Text: x 0
 --- !u!222 &1568865377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2210,13 +2212,13 @@ MonoBehaviour:
       - m_Target: {fileID: 444057287}
         m_TargetAssemblyTypeName: UiTopTurrets, Assembly-CSharp
         m_MethodName: UpgradeTurret
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1816328207

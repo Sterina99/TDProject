@@ -11,7 +11,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] bool isPlaced;
 
     [Header("UI")]
-    UiTopTurrets uiTopTurrets;
+   [SerializeField] UiTopTurrets uiTopTurrets;
     [SerializeField] Slider slider;
     [SerializeField] Button repairButton;
 
@@ -23,6 +23,7 @@ public class TurretController : MonoBehaviour
     private float rotationSpeed = 15f;
     [SerializeField] float health;
     [SerializeField] float maxHealth;
+    public int lvlUpCost;
     [SerializeField] int repairCost=5;
     
 
@@ -42,13 +43,17 @@ public class TurretController : MonoBehaviour
         InvokeRepeating("FindTarget", 0, 0.6f);
         isLinked = false;
         isOff = true;
-      //  dragSpeed = 2f;
+        //  dragSpeed = 2f;
+        lvlUpCost = 8;
         repairCost = 8;
         maxHealth = 10f;
         health = maxHealth;
         repairButton= GetComponentInChildren<Button>();
         repairButton.gameObject.SetActive(false);
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+     
+            uiTopTurrets = GameObject.Find("Panel").GetComponent<UiTopTurrets>();
+      
     }
 
     // Update is called once per frame
@@ -73,10 +78,12 @@ public class TurretController : MonoBehaviour
         
         if(health<0)
         {
+            
             //hide Hp bar and show Repair button
             slider.gameObject.SetActive(false);
             repairButton.gameObject.SetActive(true);
             isOff = true;
+            uiTopTurrets.OnResourcePicked(levelManager.money);
         }
         
         #region Rotation
@@ -164,10 +171,11 @@ public class TurretController : MonoBehaviour
     {
         if (levelManager.money < repairCost) return;
         levelManager.money -= repairCost;
-        if (uiTopTurrets == null)
-        {
-            uiTopTurrets= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
-        }
+        uiTopTurrets.OnResourcePicked(levelManager.money);
+       // if (uiTopTurrets == null)
+  //      {
+   //         uiTopTurrets= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
+    //    }
         //refresh the UI element
         health = 10f;
         slider.value = health / maxHealth;
@@ -182,8 +190,12 @@ public class TurretController : MonoBehaviour
     
     public void LevelUp()
     {
+        Debug.Log("LevelUP");
         fireRate = fireRate * 1.25f;
         range = range * 1.25f;
+        //refresh the UI element
+        health = 10f;
+        slider.value = health / maxHealth;
 
     }
 }

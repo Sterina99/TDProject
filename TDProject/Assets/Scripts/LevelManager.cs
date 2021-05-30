@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float timer;
     public int difficultyFac=0;
     private float maxTime=10;
-    [SerializeField] Text coinCount;
+    [SerializeField] UiTopTurrets coinCount;
    //private float currentTime=0;
     private void Awake()
     {
@@ -25,13 +25,13 @@ public class LevelManager : MonoBehaviour
     {
         NewLevel();
         money = 0;
-        coinCount= GameObject.Find("CoinCount").GetComponent<Text>();
+        coinCount= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyCounter == 0)
+        if (enemyCounter <= 0)
         {
          //   Debug.Log("YOU WIN");
             timer = 0;
@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
     public void addMoney(int val)
     {
         money += val;
-        coinCount.text = "x " + money;
+        coinCount.OnResourcePicked(money);
     }
 
 }
