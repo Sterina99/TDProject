@@ -6,6 +6,7 @@ public class UiTopTurrets : MonoBehaviour
     public Button[] turretSpawners;
     public Button[] turretSnatchers;
     public GameObject[] turrets;
+    public Button[] upgradeArrows;
     public string[] naturretId = {"TurretY", "TurretR", "TurretB", "TurretG"};
 
     public Text baseText;
@@ -47,5 +48,27 @@ public class UiTopTurrets : MonoBehaviour
     public void OnResourcePicked (int value)
     {
         resText.text = "" + value;
+        CheckUpgrade();
+    }
+
+    private void CheckUpgrade ()
+    {
+        if (true) //check the resources and if they are sufficient to upgrade
+        {
+            for (int i = 0; i < upgradeArrows.Length; i++)
+            {
+                if (true) //check if the turret is actuallyupgradable
+                {
+                    upgradeArrows[i].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    public void UpgradeTurret (string turretId) //identification can be changed or use the turrets[] array dependent on the needs
+    {
+        //do the upgrade
+        //mak sure turret upgradability is changed if neccessary
+        CheckUpgrade();
     }
 }
