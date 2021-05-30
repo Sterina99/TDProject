@@ -25,8 +25,8 @@ public class UiDialouges : MonoBehaviour
     {
         // Connecting and storing question database information in the engine from the.csv file
  
-        TextAsset kerdesAdatok = Resources.Load<TextAsset>("Alkotok kerdesek");
-        string[] data = kerdesAdatok.text.Split(new[] { '\n' }); //Debug.Log(data.Length);
+        TextAsset DataBaseDial = Resources.Load<TextAsset>("Dialouges");
+        string[] data = DataBaseDial.text.Split(new[] { '\n' }); //Debug.Log(data.Length);
 
         dialougeData = new UiDataDialouges[data.Length - 2];
         for (int i = 1; i < data.Length - 1; i++)
