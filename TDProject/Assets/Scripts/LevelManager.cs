@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     EnemySpawner spawner;
@@ -14,7 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float timer;
     public int difficultyFac=0;
     private float maxTime=10;
-    private float currentTime=0;
+    [SerializeField] Text coinCount;
+   //private float currentTime=0;
     private void Awake()
     {
         spawner = FindObjectOfType<EnemySpawner>();
@@ -24,7 +25,7 @@ public class LevelManager : MonoBehaviour
     {
         NewLevel();
         money = 0;
-
+        coinCount= GameObject.Find("CoinCount").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -58,6 +59,7 @@ public class LevelManager : MonoBehaviour
     public void addMoney(int val)
     {
         money += val;
+        coinCount.text = "x " + money;
     }
 
 }

@@ -6,8 +6,9 @@ public class TurretController : MonoBehaviour
 {
     public bool isLinked;
     public bool isOff;
-    private float dragSpeed;
+ //   private float dragSpeed;
     private float distance = 0f;
+    [SerializeField] bool isPlaced;
 
     [Header("UI")]
     UiTopTurrets uiTopTurrets;
@@ -41,7 +42,7 @@ public class TurretController : MonoBehaviour
         InvokeRepeating("FindTarget", 0, 0.6f);
         isLinked = false;
         isOff = true;
-        dragSpeed = 2f;
+      //  dragSpeed = 2f;
         repairCost = 8;
         maxHealth = 10f;
         health = maxHealth;

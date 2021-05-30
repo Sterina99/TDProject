@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Camera[] cameras;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SceneManager.LoadSceneAsync("UI testscene", LoadSceneMode.Additive);
 

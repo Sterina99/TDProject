@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SnapTurret : MonoBehaviour
 {
+    TurretController turretController;
+    [SerializeField] bool isEmpty;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +19,26 @@ public class SnapTurret : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        TurretController turretController = other.GetComponent<TurretController>();
+        turretController = other.GetComponent<TurretController>();
         if (turretController == null) return;
         Debug.Log("entered");
-        if (turretController.isLinked)
+        if (turretController.isLinked && isEmpty)
         {
        //     Debug.Log("Snapped");
             turretController.gameObject.transform.position = gameObject.transform.position + Vector3.up *0.6f;
+            isEmpty = false;
             turretController.isLinked = false;
             turretController.isOff = false;
         //    turretController
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Turret")) return;
+        if (!isEmpty && other.gameObject==turretController.gameObject)
+        {
+            isEmpty = true;
+            
         }
     }
 }
