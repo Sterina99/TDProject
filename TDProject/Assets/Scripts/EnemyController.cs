@@ -20,16 +20,26 @@ public class EnemyController : MonoBehaviour
         target = GameObject.Find("SKVARE II").transform;
         SetDestinationToTarget();
         sceneManager = FindObjectOfType<LevelManager>();
-      rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         #region Stats
         health = 100;
         damage = 10;
         money = 3;
         #endregion
+     //   Time.timeScale = 0f;
     }
 
     void Update()
     {
+    
+        if (Time.timeScale == 0)
+        {
+            myNavMeshAgent.isStopped = true;
+        }
+        else
+        {
+            myNavMeshAgent.isStopped = false;
+        }
        // Debug.Log(transform.forward.x);
         if (Mathf.Abs(transform.forward.z)  > 0.1f && Mathf.Abs(transform.forward.x) < 0.85f && isSprinting ==false)
         {

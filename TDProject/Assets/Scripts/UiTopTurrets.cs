@@ -7,6 +7,7 @@ public class UiTopTurrets : MonoBehaviour
     public Button[] turretSnatchers;
     public GameObject[] turrets;
     public Button[] upgradeArrows;
+    public Text[] upgradeAmount;
     public string[] naturretId = {"TurretY", "TurretR", "TurretB", "TurretG"};
 
     public Text baseText;
@@ -63,10 +64,15 @@ public class UiTopTurrets : MonoBehaviour
                         {
                     
                             upgradeArrows[i].gameObject.SetActive(true);
+                            upgradeAmount[i].text= "x " + turrets[i].GetComponent<TurretController>().lvlUpCost;
+                            upgradeAmount[i].gameObject.SetActive(true);
+                            
+                               EventHandler.current.UpgradePossible();
                         }
                           else if(turrets[i].GetComponent<TurretController>().lvlUpCost > lvlManager.money || turrets[i].GetComponent<TurretController>().isOff)
                           {
                             upgradeArrows[i].gameObject.SetActive(false);
+                            upgradeAmount[i].gameObject.SetActive(false);
                           }
                 
         }

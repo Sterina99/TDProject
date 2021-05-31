@@ -14,17 +14,24 @@ public class UiDialouges : MonoBehaviour
     public UiDataDialouges[] dialougeData;
 
     private int dialougTracker;
+    GameManager gameManager;
 
     private void Start()
     {
         dialougTracker = 0;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.stopTime();
+        EventHandler.current.OnRepairNeeded += DisplayRepairTutorial;
+        EventHandler.current.OnUpgradePossible += DisplayUpgradeTutorial;
         StartTutorial();
+       
     }
-
+  
     void StartTutorial ()
     {
+        
         // Connecting and storing question database information in the engine from the.csv file
- 
+
         TextAsset DataBaseDial = Resources.Load<TextAsset>("Dialouges");
         string[] data = DataBaseDial.text.Split(new[] { '\n' }); //Debug.Log(data.Length);
 
@@ -34,15 +41,17 @@ public class UiDialouges : MonoBehaviour
             string[] sor = data[i].Split(new char[] { ';' });
             int.TryParse(sor[0], out dialougeData[i - 1].dialougeNum); //Debug.Log(sor[0]);
             int.TryParse(sor[1], out dialougeData[i - 1].speakerId); //Debug.Log(sor[1]);
-            dialougeData[i - 1].textLine = sor[1]; //Debug.Log(sor[2]);         
+            dialougeData[i - 1].textLine = sor[2]; //Debug.Log(sor[2]);         
         }
 
         dialougePanel.gameObject.SetActive(true);
-        AdvanceDialouges();
+    
     }
 
     public void AdvanceDialouges ()
     {
+        if(dialougTracker==11) 
+        Time.timeScale = 1;
         UpdateName(dialougTracker);
         UpdateDialouge(dialougTracker);
         dialougTracker += 1;
@@ -56,5 +65,15 @@ public class UiDialouges : MonoBehaviour
     void UpdateDialouge (int dialougeNumber)
     {
         dialougeText.text = dialougeData[dialougeNumber].textLine;
+    }
+    public void DisplayRepairTutorial()
+    {
+        UpdateName(15);
+        UpdateDialouge(15);
+    }
+    public void DisplayUpgradeTutorial()
+    {
+        UpdateName(18);
+        UpdateDialouge(18);
     }
 }

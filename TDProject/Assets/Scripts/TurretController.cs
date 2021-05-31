@@ -78,7 +78,7 @@ public class TurretController : MonoBehaviour
         
         if(health<0)
         {
-            
+            EventHandler.current.RepairNeeded();
             //hide Hp bar and show Repair button
             slider.gameObject.SetActive(false);
             repairButton.gameObject.SetActive(true);

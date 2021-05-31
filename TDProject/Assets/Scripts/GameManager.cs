@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,18 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         SceneManager.LoadSceneAsync("UI testscene", LoadSceneMode.Additive);
-
+        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void  stopTime()
+    {
+        Debug.Log("STOP");
+        Time.timeScale = 0f;
     }
 }
