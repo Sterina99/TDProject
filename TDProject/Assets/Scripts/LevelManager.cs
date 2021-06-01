@@ -11,10 +11,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int level=1;
     [SerializeField] int prevLvl=0;
     public int enemyCounter=8;
-    [SerializeField] float timer;
-    public int difficultyFac=0;
-    private float maxTime=10;
+    [SerializeField] float easef;
+    public float difficultyFac=0;
+    private int prevHealth = 100;
+    bool poweredUp = false;
+   // private float maxTime=10;
     [SerializeField] UiTopTurrets coinCount;
+    [SerializeField] GoalManager goalManager;
    //private float currentTime=0;
     private void Awake()
     {
@@ -33,15 +36,22 @@ public class LevelManager : MonoBehaviour
     {
         if (enemyCounter <= 0)
         {
-         //   Debug.Log("YOU WIN");
-            timer = 0;
-
-            difficultyFac = (int)((maxTime - timer) / maxTime) *4;
+            //   Debug.Log("YOU WIN");
+          
+            difficultyFac += (prevHealth/goalManager.health + 0.6f)* 2;
+            //OTHER EASE FUNCTION
+            // (1 - (1 - easef) * (easef * easef) + (easef) * (1 - (1 - easef) * (1 - easef)) 
             prevLvl = level;
-            level +=  difficultyFac;
+            level +=  Mathf.RoundToInt( difficultyFac);
+            if (level > 70 && !poweredUp)
+            {
+                poweredUp = true;
+                EventHandler.current.EnemyPowerUp();
+            }
+         //   maxTime = 3 * level;
             NewLevel();
         }
-        timer += Time.deltaTime;
+        
         
     }
     #region LevelManagement

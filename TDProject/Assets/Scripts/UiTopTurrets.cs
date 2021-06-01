@@ -8,6 +8,7 @@ public class UiTopTurrets : MonoBehaviour
     public GameObject[] turrets;
     public Button[] upgradeArrows;
     public Text[] upgradeAmount;
+    [SerializeField] Text[] turretLvl;
     public string[] naturretId = {"TurretY", "TurretR", "TurretB", "TurretG"};
 
     public Text baseText;
@@ -62,9 +63,10 @@ public class UiTopTurrets : MonoBehaviour
                  
                         if (turrets[i].GetComponent<TurretController>().lvlUpCost <= lvlManager.money && !turrets[i].GetComponent<TurretController>().isOff) //check if the turret is actuallyupgradable
                         {
-                    
+                Debug.Log(i);
+                          turretLvl[i].text = turrets[i].GetComponent<TurretController>().level.ToString();
                             upgradeArrows[i].gameObject.SetActive(true);
-                            upgradeAmount[i].text= "x " + turrets[i].GetComponent<TurretController>().lvlUpCost;
+                            upgradeAmount[i].text= "Cost:\n x" + turrets[i].GetComponent<TurretController>().lvlUpCost;
                             upgradeAmount[i].gameObject.SetActive(true);
                             
                                EventHandler.current.UpgradePossible();

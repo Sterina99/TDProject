@@ -15,6 +15,7 @@ public class UiDialouges : MonoBehaviour
 
     private int dialougTracker;
     GameManager gameManager;
+    
 
     private void Start()
     {
@@ -54,6 +55,7 @@ public class UiDialouges : MonoBehaviour
         Time.timeScale = 1;
         UpdateName(dialougTracker);
         UpdateDialouge(dialougTracker);
+        if(dialougTracker<dialougeData.Length-1)
         dialougTracker += 1;
     }
 

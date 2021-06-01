@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     NavMeshAgent myNavMeshAgent;
-    Transform target;
+   [SerializeField] Transform target;
     LevelManager sceneManager;
     [SerializeField] int health;
     [SerializeField] GameObject partycleEffect;
@@ -22,10 +22,11 @@ public class EnemyController : MonoBehaviour
         sceneManager = FindObjectOfType<LevelManager>();
         rb = GetComponent<Rigidbody>();
         #region Stats
-        health = 100;
+        health = 60;
         damage = 10;
         money = 3;
         #endregion
+        EventHandler.current.OnEnemyPowerUp += PowerUp;
      //   Time.timeScale = 0f;
     }
 
@@ -75,16 +76,16 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             other.gameObject.SetActive(false);
-            sceneManager.enemyCounter--;
+           
 
           //  Debug.Log(other.GetComponent<Bullet>().damage);
             health -= other.GetComponent<Bullet>().damage;
             if (health <= 0)
             {
                 GameObject instance = Instantiate(partycleEffect,transform.position,transform.rotation);
-
+                sceneManager.enemyCounter--;
                 Destroy(instance, 2f);
-
+                EventHandler.current.UpdateScore();
                 Instantiate(coinPrefab, transform.position, transform.rotation);
                 gameObject.SetActive(false);
 
@@ -93,5 +94,20 @@ public class EnemyController : MonoBehaviour
             }
 
         }
+    }
+    private void OnEnable()
+    {
+        health = 100; myNavMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (target==null)
+        target = GameObject.Find("SKVARE II").transform;
+        SetDestinationToTarget();
+    }
+    public void PowerUp()
+    {
+      //  Debug.Log("NewSpeed");
+
+        myNavMeshAgent.speed += 5;
+        myNavMeshAgent.acceleration += 5;
     }
 }

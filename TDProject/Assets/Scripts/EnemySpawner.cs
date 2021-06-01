@@ -8,10 +8,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject [] enemyPrefabs;
     private List<GameObject> enemies;
     public float spawnTime;
+    
     // Start is called before the first frame update
     void Awake()
     {
-        enemies = new List<GameObject>();   
+        enemies = new List<GameObject>();
+        
        
     }
 
@@ -58,7 +60,6 @@ public class EnemySpawner : MonoBehaviour
         
     }
     #endregion
-
    
 }
 

@@ -16,6 +16,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] Button repairButton;
 
     [Header("Stats")]
+    public int level = 1;
     [SerializeField] int id;
     public float range = 15f;
     public float fireRate = 1f;
@@ -46,7 +47,7 @@ public class TurretController : MonoBehaviour
         //  dragSpeed = 2f;
         lvlUpCost = 8;
         repairCost = 8;
-        maxHealth = 10f;
+        maxHealth = 15f;
         health = maxHealth;
         repairButton= GetComponentInChildren<Button>();
         repairButton.gameObject.SetActive(false);
@@ -82,6 +83,7 @@ public class TurretController : MonoBehaviour
             //hide Hp bar and show Repair button
             slider.gameObject.SetActive(false);
             repairButton.gameObject.SetActive(true);
+            Debug.Log("dead");
             isOff = true;
             uiTopTurrets.OnResourcePicked(levelManager.money);
         }
@@ -177,24 +179,28 @@ public class TurretController : MonoBehaviour
    //         uiTopTurrets= GameObject.Find("Panel").GetComponent<UiTopTurrets>();
     //    }
         //refresh the UI element
-        health = 10f;
+        health = maxHealth;
         slider.value = health / maxHealth;
 
         slider.gameObject.SetActive(true);
         repairButton.gameObject.SetActive(false);
         uiTopTurrets.SnatchTurret(id);
         isOff = false;
+        EventHandler.current.UpdateScore();
 
-        
+
     }
     
     public void LevelUp()
     {
-        Debug.Log("LevelUP");
-        fireRate = fireRate * 1.25f;
-        range = range * 1.25f;
+        EventHandler.current.UpdateScore();
+      //  Debug.Log("LevelUP");
+        level++;
+        fireRate = fireRate * 1.2f;
+        range = range * 1.2f;
+        maxHealth = maxHealth * 1.2f;
         //refresh the UI element
-        health = 10f;
+        health = maxHealth;
         slider.value = health / maxHealth;
 
     }

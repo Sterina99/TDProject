@@ -25,7 +25,7 @@ public class SnapTurret : MonoBehaviour
     {
         turretController = other.GetComponent<TurretController>();
         if (turretController == null) return;
-        Debug.Log("entered");
+      //  Debug.Log("entered");
         if (turretController.isLinked && isEmpty)
         {
        //     Debug.Log("Snapped");
@@ -33,7 +33,7 @@ public class SnapTurret : MonoBehaviour
             isEmpty = false;
             turretController.isLinked = false;
             turretController.isOff = false;
-        //    turretController
+     
         }
     }
     private void OnTriggerExit(Collider other)
